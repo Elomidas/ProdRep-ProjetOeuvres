@@ -74,6 +74,7 @@ public class Controleur extends HttpServlet {
 
 			destinationPage = "/listerAdherent.jsp";
 		}
+		else
 		if (AJOUTER_ADHERENT.equals(actionName)) {
 
 			destinationPage = "/ajouterAdherent.jsp";
