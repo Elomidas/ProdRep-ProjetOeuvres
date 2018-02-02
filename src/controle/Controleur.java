@@ -23,6 +23,8 @@ public class Controleur extends HttpServlet {
 	private static final String LISTER_RADHERENT = "listerAdherent";
 	private static final String AJOUTER_ADHERENT = "ajouterAdherent";
 	private static final String INSERER_ADHERENT = "insererAdherent";
+	private static final String RESERVER_MENU = "reserverMenu"; // affiche le menu de reservation
+	private static final String RESERVER_OEUVRE = "reserverOeuvre"; // réserve une oeuvre
 	private static final String ERROR_KEY = "messageErreur";
 	private static final String ERROR_PAGE = "/erreur.jsp";
 
@@ -72,7 +74,6 @@ public class Controleur extends HttpServlet {
 
 			destinationPage = "/listerAdherent.jsp";
 		}
-		else
 		if (AJOUTER_ADHERENT.equals(actionName)) {
 
 			destinationPage = "/ajouterAdherent.jsp";
@@ -85,6 +86,30 @@ public class Controleur extends HttpServlet {
 				Service unService = new Service();
 				unService.insertAdherent(unAdherent);
 
+			} catch (MonException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			destinationPage = "/index.jsp";
+		}
+		else
+		if (RESERVER_MENU.equals(actionName)) { // affiche le menu de réservation
+			try {
+				Service unService = new Service();
+				request.setAttribute("mesAdherents", unService.consulterListeAdherents());
+			} catch (MonException e) {
+				e.printStackTrace();
+			}
+			destinationPage = "/reserverOeuvre.jsp";
+		} else if (RESERVER_OEUVRE.equals(actionName)) { // réserve l'oeuvre
+			try {
+				Service unService = new Service();
+				Oeuvrepret oeuvrePret = new Oeuvrepret();
+				Proprietaire proprietaire = unService.rechercherProprietaire(
+						Integer.valueOf(request.getParameter("idProprietaire")));
+				oeuvrePret.setProprietaire(proprietaire);
+				oeuvrePret.setTitreOeuvrepret(request.getParameter("txtOeuvre"));
+				unService.reserverOeuvre(oeuvrePret);
 			} catch (MonException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
