@@ -98,18 +98,17 @@ public class Controleur extends HttpServlet {
 			destinationPage = "/index.jsp";
 		}
 		else
-		if (LISTER_OEUVRE.equals(actionName))
-		{
-			try{
+		if (LISTER_OEUVRE.equals(actionName)) {
+			try {
 
 				Service unService = new Service();
-				request.setAttribute("mesOeuvres", unService.consulterListeOeuvresV());
-			}
-			catch (MonException e)
-			{
+				request.setAttribute("mesOeuvresV", unService.consulterListeOeuvresV());
+			} catch (MonException e) {
 				e.printStackTrace();
 			}
 			destinationPage = "/listerOeuvre.jsp";
+		}
+		else
 		if (RESERVER_MENU.equals(actionName)) { // affiche le menu de réservation
 			try {
 				Service unService = new Service();

@@ -143,12 +143,12 @@ public class Service {
 	// Consultation des oeuvresVente
 	// Fabrique et renvoie une liste d'objets oeuvreVente contenant le r�sultat de
 	// la requ�te BDD
-	public List<Adherent> consulterListeOeuvresV() throws MonException {
+	public List<Oeuvrevente> consulterListeOeuvresV() throws MonException {
 		String mysql = "select * from oeuvrevente";
 		return consulterListeOeuvresV(mysql);
 	}
 
-	private List<Adherent> consulterListeOeuvresV(String mysql) throws MonException {
+	private List<Oeuvrevente> consulterListeOeuvresV(String mysql) throws MonException {
 		List<Object> rs;
 		List<Oeuvrevente> mesOeuvresV = new ArrayList<Oeuvrevente>();
 		int index = 0;
@@ -170,7 +170,6 @@ public class Service {
 				index = index + 5;
 				mesOeuvresV.add(OV);
 			}
-
 			return mesOeuvresV;
 		} catch (MonException e) {
 			throw e;
