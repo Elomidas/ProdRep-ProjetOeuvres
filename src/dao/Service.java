@@ -1,6 +1,8 @@
 package dao;
 
 import meserreurs.MonException;
+
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import metier.*;
@@ -35,16 +37,16 @@ public class Service {
 	// Fabrique et renvoie un objet adh�rent contenant le r�sultat de la requ�te
 	// BDD
 	public Adherent consulterAdherent(int numero) throws MonException {
-		
+
 		 Map mParams = new HashMap();
 	     Map mParam;
 	  try
 	  {
-		String mysql = "select * from adherent where numero_adherent=?";
+		String mysql = "select * from adherent where id_adherent = ?";
 		 mParam = new HashMap();
 	     mParam.put(1, numero);
-	     mParams.put(0, mParam); 
-		List<Adherent> mesAdh = consulterListeAdherents(mysql);
+	     mParams.put(0, mParam);
+		List<Adherent> mesAdh = consulterListeAdherents(mysql, mParams);
 		if (mesAdh.isEmpty())
 			return null;
 		else {
@@ -61,16 +63,20 @@ public class Service {
 	// la requ�te BDD
 	public List<Adherent> consulterListeAdherents() throws MonException {
 		String mysql = "select * from adherent";
-		return consulterListeAdherents(mysql);
+		return consulterListeAdherents(mysql, null);
 	}
 
-	private List<Adherent> consulterListeAdherents(String mysql) throws MonException {
+	private List<Adherent> consulterListeAdherents(String mysql, Map mParams) throws MonException {
 		List<Object> rs;
 		List<Adherent> mesAdherents = new ArrayList<Adherent>();
 		int index = 0;
 		try {
 			DialogueBd unDialogueBd = DialogueBd.getInstance();
-			rs =unDialogueBd.lecture(mysql);
+			if(mParams == null){
+				rs = unDialogueBd.lecture(mysql);
+			}else{
+				rs=DialogueBd.getInstance().lectureParametree(mysql, mParams);
+			}
 			while (index < rs.size()) {
 				// On cr�e un stage
 				Adherent unA = new Adherent();
@@ -177,19 +183,18 @@ public class Service {
 	 
 	public Proprietaire rechercherProprietaire(int  id) throws MonException
 	{
-		
-		String mysql = "";
-		 Map mParams = new HashMap();
-	     Map mParam;
+
+		Map mParams = new HashMap();
+		Map mParam;
 	 	List<Object> rs;
 		Proprietaire  unProprietaire=null;
-		String requete = " select * from Proprietaire where id_Proprietaire ?";
+		String requete = "select * from Proprietaire where id_Proprietaire = ?";
 		try 
 		{
 			 mParam = new HashMap();
 		     mParam.put(1, id);
 		     mParams.put(0, mParam);  
-		     rs=DialogueBd.getInstance().lectureParametree(mysql, mParams);
+		     rs=DialogueBd.getInstance().lectureParametree(requete, mParams);
 			if (rs.size() > 0) {
 			
 				unProprietaire = new Proprietaire();
@@ -207,9 +212,23 @@ public class Service {
 			throw new MonException(exc.getMessage(), "systeme");
 		}
 		return unProprietaire;
-	}	
+	}
 
-	
-	
-
+    public void reserverOeuvre(Reservation reservation) throws MonException {
+		String mysql;
+		DialogueBd unDialogueBd = DialogueBd.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			mysql = "insert into reservation (id_oeuvrevente,id_adherent,date_reservation, statut)  " + "values ('"
+					+ reservation.getOeuvrevente().getIdOeuvrevente() + "','"
+					+ reservation.getAdherent().getIdAdherent() + "','"
+					+ sdf.format(reservation.getDate()) + "','"
+					+ reservation.getStatus() + "')";
+			unDialogueBd.insertionBD(mysql);
+		} catch (MonException e) {
+			throw e;
+		} catch (Exception exc) {
+			throw new MonException(exc.getMessage(), "systeme");
+		}
+    }
 }
