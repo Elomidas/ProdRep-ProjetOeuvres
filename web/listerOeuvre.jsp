@@ -18,23 +18,22 @@
 </P>
 
 <TABLE BORDER="1">
-    <CAPTION>Tableau des Oeuvres en vente</CAPTION>
+    <CAPTION>Catalogue des Oeuvres</CAPTION>
     <TR>
-        <TH>Numero</TH>
         <TH>Titre</TH>
-        <TH>Etat</TH>
         <TH>Prix</TH>
-        <TH>Propriétaire</TH>
-
+        <TH>Prenom propriétaire</TH>
+        <TH>Nom propriétaire</TH>
+        <TH>Réserver/Modifier</TH>
     </TR>
 
     <c:forEach items="${mesOeuvresV}" var="item">
         <tr>
-            <td>${item.idOeuvrevente}</td>
             <td>${item.titreOeuvrevente}</td>
-            <td>${item.etatOeuvrevente}</td>
             <td>${item.prixOeuvrevente}</td>
-            <td>${item.proprietaire}</td>
+            <td>${item.proprietaire.prenomProprietaire}</td>
+            <td>${item.proprietaire.nomProprietaire}</td>
+            <td><a href="reserverOeuvre.jsp"><button>Réserver</button></a> <a href="modifierOeuvre.jsp"><button>Modifier</button></a></td>
         </tr>
     </c:forEach>
 </TABLE>

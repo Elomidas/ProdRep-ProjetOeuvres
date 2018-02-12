@@ -160,10 +160,10 @@ public class Service {
 				Oeuvrevente OV = new Oeuvrevente();
 				// il faut redecouper la liste pour retrouver les lignes
 				OV.setIdOeuvrevente(Integer.parseInt(rs.get(index + 0).toString()));
-				OV.setEtatOeuvrevente(rs.get(index + 1).toString());
-				OV.setPrixOeuvrevente(Float.parseFloat(rs.get(index + 2).toString()));
-				OV.setTitreOeuvrevente(rs.get(index + 3).toString());
-				int num = Integer.parseInt(rs.get(4).toString());
+				OV.setTitreOeuvrevente(rs.get(index + 1).toString());
+				OV.setEtatOeuvrevente(rs.get(index + 2).toString());
+				OV.setPrixOeuvrevente(Float.parseFloat(rs.get(index + 3).toString()));
+				int num = Integer.parseInt(rs.get(index + 4).toString());
 				// On appelle la recherche d'un propri�taire
 				OV.setProprietaire(rechercherProprietaire(num));
 				// On incr�mente tous les 3 champs
