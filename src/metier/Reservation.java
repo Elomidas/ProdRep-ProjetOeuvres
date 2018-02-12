@@ -1,7 +1,7 @@
 package metier;
 
 import java.io.Serializable;
-import javax.persistence.*;
+//import javax.persistence.*;
 import java.util.Date;
 
 
