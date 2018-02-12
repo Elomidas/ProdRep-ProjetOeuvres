@@ -14,8 +14,7 @@
         Accueil</FONT></A>
 </P>
 <P align="center">
-    <FONT face="Arial" size="5" color="#004080"><U> <STRONG>Listing&nbsp;des
-        oeuvres en vente </STRONG></U></FONT>
+    <FONT face="Arial" size="5" color="#004080"><U> <STRONG></STRONG></U></FONT>
 </P>
 
 <TABLE BORDER="1">
@@ -23,7 +22,7 @@
     <TR>
         <TH>Numero</TH>
         <TH>Titre</TH>
-        <TH>Etat/TH>
+        <TH>Etat</TH>
         <TH>Prix</TH>
         <TH>Propriétaire</TH>
 

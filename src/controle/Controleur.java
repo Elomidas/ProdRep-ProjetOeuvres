@@ -38,6 +38,7 @@ public class Controleur extends HttpServlet {
 	public Controleur() {
 		super();
 		// TODO Auto-generated constructor stub
+
 	}
 
 	/**
@@ -98,11 +99,12 @@ public class Controleur extends HttpServlet {
 			destinationPage = "/index.jsp";
 		}
 		else
-		if (LISTER_OEUVRE.equals(actionName)) {
+		if (LISTER_OEUVRE.equals(actionName)) { // Affiche la liste des oeuvres
 			try {
 
 				Service unService = new Service();
 				request.setAttribute("mesOeuvresV", unService.consulterListeOeuvresV());
+
 			} catch (MonException e) {
 				e.printStackTrace();
 			}
@@ -169,6 +171,7 @@ public class Controleur extends HttpServlet {
 			String messageErreur = "[" + actionName + "] n'est pas une action valide.";
 			request.setAttribute(ERROR_KEY, messageErreur);
 		}
+
 		// Redirection vers la page jsp appropriee
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(destinationPage);
 		dispatcher.forward(request, response);
