@@ -44,7 +44,7 @@
 
         <!-- Bouton Réserver -->
         <input class="btn btn-primary" type="submit" name="bt" value="Réserver">
-        <a class="btn btn-light" href="Controleur?action=listerOeuvres">Annuler</a>
+        <a class="btn btn-light" href="Controleur?action=listerOeuvre">Annuler</a>
      </form>
 </div>
 </body>

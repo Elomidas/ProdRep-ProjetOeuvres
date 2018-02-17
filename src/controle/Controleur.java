@@ -30,6 +30,8 @@ public class Controleur extends HttpServlet {
 	private static final String RESERVER_MENU = "reserverMenu"; // affiche le menu de reservation
 	private static final String RESERVER_OEUVRE = "reserverOeuvre"; // réserve une oeuvre
 	private static final String ERROR_KEY = "messageErreur";
+	private static final String FORM_MODIFIER_OEUVRE = "form_modifierOeuvre"; // formulaire pour modifier une oeuvre
+	private static final String MODIFIER_OEUVRE = "modifierOeuvre"; //modifier une oeuvre
 	private static final String ERROR_PAGE = "/erreur.jsp";
 
 	/**
@@ -165,6 +167,52 @@ public class Controleur extends HttpServlet {
 			}
 			destinationPage = "/index.jsp";
 			//destinationPage = "/listerOeuvre.jsp";
+		}
+		else if (FORM_MODIFIER_OEUVRE.equals(actionName)) // formulaire de modification d'oeuvre
+		{
+			try{
+
+				// On récupère tous les propriétaires
+				Service unService = new Service();
+				request.setAttribute("mesProp", unService.consulterListeProp());
+
+				// On récupère les caractéristiques de l'oeuvre
+				request.setAttribute("oeuvre", unService.rechercherOeuvreIdParam(Integer.valueOf(request.getParameter("idOeuvre"))));
+			}
+			catch (MonException e)
+			{
+				e.printStackTrace();
+			}
+
+			destinationPage = "/modifierOeuvre.jsp";
+
+		}
+		else if(MODIFIER_OEUVRE.equals(actionName)) // Modifier une oeuvre
+		{
+			try{
+				//Création du service
+				Service unService = new Service();
+
+				//Récupération de l'oeuvre à modifier
+				int idOeuvrevente = Integer.valueOf(request.getParameter("idOeuvre"));
+				Oeuvrevente oeuvrevente = unService.rechercherOeuvreIdParam(idOeuvrevente);
+
+				String titreOeuvrevente = request.getParameter("txttitre").toString();
+				oeuvrevente.setTitreOeuvrevente(titreOeuvrevente);
+
+				float prixOeuvrevente = Float.valueOf(request.getParameter("txtprix"));
+				oeuvrevente.setPrixOeuvrevente(prixOeuvrevente);
+
+				Proprietaire propOeuvrevente = unService.rechercherProprietaire(Integer.valueOf(request.getParameter("prop")));
+				oeuvrevente.setProprietaire(propOeuvrevente);
+
+				unService.modifierOeuvre(oeuvrevente);
+			}
+			catch (MonException e)
+			{
+				e.printStackTrace();
+			}
+			destinationPage = "/index.jsp";
 		}
 
 		else {
