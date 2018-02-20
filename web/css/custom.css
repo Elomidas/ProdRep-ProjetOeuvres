@@ -87,3 +87,11 @@ a:hover {
 .pan-red:hover {
 	background-color: #D32F2F;
 }
+
+/* Same Height columns */
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
