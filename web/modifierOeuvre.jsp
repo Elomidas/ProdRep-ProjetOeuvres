@@ -1,39 +1,47 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Modifier une oeuvre</title>
-</head>
-<SCRIPT language="Javascript" type="text/javascript">
-    <script type="text/javascript" src="js/foncControle.js"></script>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+
+<t:layout>
+	<jsp:attribute name="head">
+		<title>Modifier une oeuvre</title>
+	</jsp:attribute>
+
+	<jsp:attribute name="scripts">
+		<script language="Javascript" type="text/javascript"></script>
+		<script type="text/javascript" src="js/foncControle.js"></script>
+	</jsp:attribute>
 
 
-<body>
-<H1> Formulaire de modification d'oeuvres </H1>
+	<jsp:body>
+		<div class="row">
+			<div class="col-xs-8 col-xs-offset-2">
+				<h2 class="center">
+					Formulaire de modification d'oeuvres
+				</h2>
+			</div>
+		</div>
 
-<DIV align="center">
-    <FORM  name='identification' method="post" action="Controleur?action=insererAdherent" onsubmit="return teste()">
-        <P align="left"><FONT face="Arial" color="#004080"></FONT>
-            <FONT face="Arial" color="#004080"> <BR>&nbsp;  &nbsp;  &nbsp; Nom de l'adherent : </FONT>
-            <INPUT type="text" name="txtnom" value=""  id ="nom"> <BR>
-            <FONT face="Arial" color="#004080">
-                <BR>Prenom de l'adherent : </FONT>
-            <INPUT type="text" name="txtprenom"  id ="prenom"  > <BR>
+<div align="center">
+	<form  name='identification' method="post" action="Controleur?action=insererAdherent" onsubmit="return teste()">
+		<p align="left">
+			<font face="Arial" color="#004080"></font>
+			<font face="Arial" color="#004080"> <br>&nbsp;  &nbsp;  &nbsp; Nom de l'adherent : </font>
+			<input type="text" name="txtnom" value=""  id ="nom"> <br>
+			<font face="Arial" color="#004080">
+				<br>Prenom de l'adherent : </font>
+			<input type="text" name="txtprenom"  id ="prenom"  > <br>
 
-            <FONT face="Arial" color="#004080"> <BR>&nbsp;  &nbsp;  &nbsp; Ville de l'adherent :</FONT>
-            <INPUT type="text" name="txtville" id ="ville">
-            <FONT face="Arial" color="#004080">	<BR></FONT><BR>
+			<font face="Arial" color="#004080"> <br>&nbsp;  &nbsp;  &nbsp; Ville de l'adherent :</font>
+			<input type="text" name="txtville" id ="ville">
+			<font face="Arial" color="#004080">	<br></font><br>
 
-            <!-- Boutons Ajouter -->
+			<!-- Boutons Ajouter -->
 
-            <INPUT type="submit" name="bt"  value="Modifier" >
-            <FONT face="Arial" color="#004080"></FONT>
-            &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="submit" name="bt"  value="Modifier" >
+			<font face="Arial" color="#004080"></font>
+			&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-        </P></FORM>
-</DIV>
-<BR>
-</body>
-</html>
+		</p></form>
+</div>
+</jsp:body>
+</t:layout>

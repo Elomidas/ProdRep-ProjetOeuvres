@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:layout>
 	<jsp:attribute name="head">
@@ -23,24 +23,27 @@
 			</div>
 		</div>
 
-		<table border="1">
-			<caption>Tableau des Adhérents</caption>
-			<tr>
-				<th>Numero</th>
-				<th>Nom</th>
-				<th>Prénom</th>
-				<th>Ville</th>
+		<br />
 
-			</tr>
-
-			<c:forEach items="${mesAdherents}" var="item">
+		<div class="row">
+			<table class="table tableCenter">
 				<tr>
-					<td>${item.idAdherent}</td>
-					<td>${item.nomAdherent}</td>
-					<td>${item.prenomAdherent}</td>
-	                <td>${item.villeAdherent}</td>
+					<th>Numero</th>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Ville</th>
+
 				</tr>
-			</c:forEach>
-		</table>
+
+				<c:forEach items="${mesAdherents}" var="item">
+					<tr>
+						<td>${item.idAdherent}</td>
+						<td>${item.nomAdherent}</td>
+						<td>${item.prenomAdherent}</td>
+						<td>${item.villeAdherent}</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
 	</jsp:body>
 </t:layout>

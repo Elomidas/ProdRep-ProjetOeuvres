@@ -1,4 +1,4 @@
-.center {
+.center, .tableCenter * * {
 	text-align: center;
 	align-self: center;
 }
