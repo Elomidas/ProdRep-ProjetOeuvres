@@ -1,10 +1,14 @@
-.center {
+.center, .tableCenter * * {
 	text-align: center;
 	align-self: center;
 }
 
 .blue {
 	color: #2C8DDB;
+}
+
+.blue:hover {
+	color: #2196F3;
 }
 
 h1 {
@@ -25,6 +29,23 @@ body {
 
 a:hover {
 	text-decoration: none;
+}
+
+label {
+	padding-bottom: 15px;
+	font-weight: normal;
+}
+
+.btn-info {
+	background-color: #2C8DDB;
+}
+
+.btn-info:hover {
+	background-color: #2196F3;
+}
+
+.navicon {
+	font-size: 28px;
 }
 
 /* Panels
@@ -51,14 +72,52 @@ a:hover {
 	text-align: center;
 }
 
-.pan-body {
-	margin-top: 10px;
+.btn-info {
+	background-color: #2C8DDB;
+}
+
+/* Panels
+ * Define differents pan's color
+ */
+/* GLOBAL */
+.panels div {
+	padding: 10px;
+}
+
+.panels div a {
+	text-decoration: none;
+}
+
+.pan-link {
+	height: 100%;
+}
+
+.pan {
+	color: white;
+	border-radius: 10px;
+	height: 100%;
+	max-width: 300px;
+	min-width: 150px;
+	align-self: center;
+	position: relative;
+}
+
+.pan * {
+	text-align: center;
+	display: block;
+}
+
+.pan-body span {
+	padding-top: 10px;
 	margin-bottom: 10px;
 	font-size: 40px;
+	align-self: center;
 }
 
 .pan-footer {
-	vertical-align: baseline;
+	margin-bottom: 10px;
+	vertical-align: bottom;
+	align-self: center;
 }
 
 /* GREEN */
@@ -86,4 +145,12 @@ a:hover {
 
 .pan-red:hover {
 	background-color: #D32F2F;
+}
+
+/* Same Height columns */
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
 }

@@ -1,41 +1,77 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Affichage de toutes les oeuvres en vente</title>
-</head>
-<body>
-<P>
-    <A href="index.jsp"><FONT face="Arial" color="#004080">Retour
-        Accueil</FONT></A>
-</P>
-<P align="center">
-    <FONT face="Arial" size="5" color="#004080"><U> <STRONG></STRONG></U></FONT>
-</P>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<TABLE BORDER="1">
-    <CAPTION>Catalogue des Oeuvres</CAPTION>
-    <TR>
-        <TH>Titre</TH>
-        <TH>Prix</TH>
-        <TH>Prenom propriétaire</TH>
-        <TH>Nom propriétaire</TH>
-        <TH>Réserver/Modifier</TH>
-    </TR>
+<t:layout>
+	<jsp:attribute name="head">
+		<title>Affichage de toutes les oeuvres en vente</title>
+	</jsp:attribute>
 
-    <c:forEach items="${mesOeuvresV}" var="item">
-        <tr>
-            <td>${item.titreOeuvrevente}</td>
-            <td>${item.prixOeuvrevente}</td>
-            <td>${item.proprietaire.prenomProprietaire}</td>
-            <td>${item.proprietaire.nomProprietaire}</td>
-            <td><a href="reserverOeuvre.jsp"><button>Réserver</button></a> <a href="modifierOeuvre.jsp"><button>Modifier</button></a></td>
-        </tr>
-    </c:forEach>
-</TABLE>
-</body>
-</html>
+	<jsp:attribute name="scripts">
+	</jsp:attribute>
+
+	<jsp:body>
+		<div class="row">
+			<div class="col-xs-2">
+				<t:arrow></t:arrow>
+			</div>
+			<div class="col-xs-8">
+				<h2 class="center">
+					Listing des Œuvres
+				</h2>
+			</div>
+		</div>
+
+		<br />
+
+		<div class="row">
+			<table class="table tableCenter">
+				<tr>
+					<th>
+						Titre
+					</th>
+					<th>
+						Prix
+					</th>
+					<th class="center">
+						Prénom Propriétaire
+					</th>
+					<th>
+						Nom Propriétaire
+					</th>
+					<th>
+						Réserver - Modifier
+					</th>
+				</tr>
+
+				<c:forEach items="${mesOeuvresV}" var="item">
+					<tr>
+						<td>
+							${item.titreOeuvrevente}
+						</td>
+						<td>
+							${item.prixOeuvrevente}
+						</td>
+						<td>
+							${item.proprietaire.prenomProprietaire}
+						</td>
+						<td>
+							${item.proprietaire.nomProprietaire}
+						</td>
+						<td>
+							<a href="reserverOeuvre.jsp">
+								<input type="button" class="btn btn-info btn-lg" value="Réserver" />
+							</a>
+							&nbsp;
+							&nbsp;
+							<a href="modifierOeuvre.jsp">
+								<input type="button" class="btn btn-info btn-lg" value="Modifier" />
+							</a>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+	</jsp:body>
+</t:layout>
