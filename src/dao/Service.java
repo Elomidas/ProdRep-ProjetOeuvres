@@ -218,11 +218,17 @@ public class Service {
 		DialogueBd unDialogueBd = DialogueBd.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
+			// Inserérer une réservation
 			mysql = "insert into reservation (id_oeuvrevente,id_adherent,date_reservation, statut)  " + "values ('"
 					+ reservation.getOeuvrevente().getIdOeuvrevente() + "','"
 					+ reservation.getAdherent().getIdAdherent() + "','"
 					+ sdf.format(reservation.getDate()) + "','"
 					+ reservation.getStatus() + "')";
+			unDialogueBd.insertionBD(mysql);
+
+			// Modifier l'état
+			mysql = "update oeuvrevente set etat_oeuvrevente = 'R' where id_oeuvrevente = '"
+					+ reservation.getOeuvrevente().getIdOeuvrevente() + "'";
 			unDialogueBd.insertionBD(mysql);
 		} catch (MonException e) {
 			throw e;
@@ -230,4 +236,42 @@ public class Service {
 			throw new MonException(exc.getMessage(), "systeme");
 		}
     }
+
+    public List<Proprietaire> consulterListeProprietaires() {
+		String mysql = "select * from proprietaire";
+		List<Object> rs;
+		List<Proprietaire> mesProprietaires = new ArrayList<Proprietaire>();
+		int index = 0;
+		try {
+			DialogueBd unDialogueBd = DialogueBd.getInstance();
+			rs = unDialogueBd.lecture(mysql);
+			while (index < rs.size()) {
+				// On crée un stage
+				Proprietaire unP = new Proprietaire();
+				// il faut redecouper la liste pour retrouver les lignes
+				unP.setIdProprietaire(Integer.parseInt(rs.get(index++).toString()));
+				unP.setNomProprietaire(rs.get(index++).toString());
+				unP.setPrenomProprietaire(rs.get(index++).toString());
+				mesProprietaires.add(unP);
+			}
+		} catch (MonException e) {
+			e.printStackTrace();
+		}
+		return mesProprietaires;
+    }
+
+	public void insertOeuvreVente(Oeuvrevente oeuvrevente) {
+		String mysql;
+		DialogueBd unDialogueBd = DialogueBd.getInstance();
+		try {
+			mysql = "insert into oeuvrevente (titre_oeuvrevente, etat_oeuvrevente, prix_oeuvrevente, id_proprietaire) " + "values ('"
+				+ oeuvrevente.getTitreOeuvrevente() + "','"
+				+ oeuvrevente.getEtatOeuvrevente() + "','"
+				+ oeuvrevente.getPrixOeuvrevente() + "','"
+				+ oeuvrevente.getProprietaire().getIdProprietaire() + "')";
+			unDialogueBd.insertionBD(mysql);
+		} catch (MonException e) {
+			e.printStackTrace();
+		}
+	}
 }

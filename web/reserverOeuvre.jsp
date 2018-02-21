@@ -17,25 +17,25 @@
         <input type="hidden" name="idOeuvre" value="${oeuvre.idOeuvrevente}">
 
         <!-- Champs désactivés -->
-        <div>
-            <label for="titre">Titre de l'oeuvre </label>
-            <input name="titre" id="titre" value="${oeuvre.titreOeuvrevente}" disabled>
+        <div class="form-group row">
+            <label for="titre" class="col-sm-2 col-form-label">Titre de l'oeuvre </label>
+            <input name="titre" class="form-control-plaintext" id="titre" value="${oeuvre.titreOeuvrevente}" readonly>
         </div>
 
-        <div>
-            <label for="prix">Prix </label>
-            <input name="prix" id="prix" value="${oeuvre.prixOeuvrevente}" disabled>
+        <div class="form-group row">
+            <label for="prix" class="col-sm-2 col-form-label">Prix </label>
+            <input name="prix" class="form-control-plaintext" id="prix" value="${oeuvre.prixOeuvrevente}" readonly>
         </div>
 
         <!-- Champs à remplir -->
-        <div>
-            <label for="date">Date Réservation </label>
-            <input type="date" name="date" id="date" required>
+        <div class="form-group row">
+            <label for="date" class="col-sm-2 col-form-label">Date Réservation </label>
+            <input type="date" class="form-control" name="date" id="date" required>
         </div>
 
-        <div>
-            <label for="adherent">Adherent </label>
-            <select name="idAdherent" id="adherent" required>
+        <div class="form-group row">
+            <label for="adherent" class="col-sm-2 col-form-label">Adherent </label>
+            <select name="idAdherent" class="form-control" id="adherent" required>
                 <c:forEach items="${mesAdherents}" var="adherent">
                     <option value="${adherent.idAdherent}">${adherent.prenomAdherent} ${adherent.nomAdherent}</option>
                 </c:forEach>

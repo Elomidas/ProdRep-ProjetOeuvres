@@ -33,7 +33,10 @@
             <td>${item.prixOeuvrevente}</td>
             <td>${item.proprietaire.prenomProprietaire}</td>
             <td>${item.proprietaire.nomProprietaire}</td>
-            <td><a href="reserverOeuvre.jsp"><button>Réserver</button></a> <a href="modifierOeuvre.jsp"><button>Modifier</button></a></td>
+            <td>
+                <a href="Controleur?action=reserverMenu&idOeuvre=${item.idOeuvrevente}"><button>Réserver</button></a>
+                <a href="modifierOeuvre.jsp"><button>Modifier</button></a>
+            </td>
         </tr>
     </c:forEach>
 </TABLE>

@@ -26,6 +26,8 @@ public class Controleur extends HttpServlet {
 	private static final String LISTER_RADHERENT = "listerAdherent";
 	private static final String AJOUTER_ADHERENT = "ajouterAdherent";
 	private static final String INSERER_ADHERENT = "insererAdherent";
+	private static final String AJOUTER_OEUVRE = "ajouterOeuvre";
+	private static final String INSERER_OEUVRE = "insererOeuvre";
 	private static final String LISTER_OEUVRE = "listerOeuvre";
 	private static final String RESERVER_MENU = "reserverMenu"; // affiche le menu de reservation
 	private static final String RESERVER_OEUVRE = "reserverOeuvre"; // réserve une oeuvre
@@ -97,8 +99,25 @@ public class Controleur extends HttpServlet {
 				e.printStackTrace();
 			}
 			destinationPage = "/index.jsp";
-		}
-		else
+		} else if (AJOUTER_OEUVRE.equals(actionName)) {
+			Service unService = new Service();
+			request.setAttribute("mesProprietaires", unService.consulterListeProprietaires());
+			destinationPage = "/ajouterOeuvre.jsp";
+		} else if (INSERER_OEUVRE.equals(actionName)) {
+			try {
+				Service unService = new Service();
+				Oeuvrevente oeuvrevente = new Oeuvrevente();
+				oeuvrevente.setTitreOeuvrevente(request.getParameter("titre"));
+				oeuvrevente.setEtatOeuvrevente("L");
+				oeuvrevente.setPrixOeuvrevente(Integer.valueOf(request.getParameter("prix")));
+				oeuvrevente.setProprietaire(unService.rechercherProprietaire(Integer.valueOf(request.getParameter("idProprietaire"))));
+				unService.insertOeuvreVente(oeuvrevente);
+			} catch (MonException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			destinationPage = "/index.jsp";
+		} else
 		if (LISTER_OEUVRE.equals(actionName)) { // Affiche la liste des oeuvres
 			try {
 
@@ -163,8 +182,7 @@ public class Controleur extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			destinationPage = "/index.jsp";
-			//destinationPage = "/listerOeuvre.jsp";
+			destinationPage = "/Controleur?action=listerOeuvre";
 		}
 
 		else {
