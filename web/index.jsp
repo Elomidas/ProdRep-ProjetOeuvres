@@ -1,46 +1,68 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<t:layout>
+<jsp:attribute name="head">
 <meta http-equiv="refresh" content="0;URL=javascript:fermer();">
 <title>Expo : Médiathèque De POLYTECH</title>
-</head>
+</jsp:attribute>
 
-
+<jsp:attribute name="scripts">
 <script language="JavaScript">
 	function fermer() {
 
 	}
 </script>
+</jsp:attribute>
 
-<body>
-	<p align="center"></p>
-	<p align="center">
-		<font face="Arial" size="4"><u>Médiathèque de POLYTECH </u></font>
-	</p>
-	<p align="center">
-		<font color="#004080" face="Arial" size="4">Gestion de
-			l'exposition 2016</font>
-	</p>
-	<p align="left">
-		<font color="#004080" face="Arial"><u>Sélectionnez la
-				fonctionnalité voulue:</u></font>
-	</p>
-	<ul>
-		<li><a href="Controleur?action=ajouterAdherent"><font
-				face="Arial">Ajout Adhérent</font></a></li>
+<jsp:body>
+<div class="row">
+	<h2 class="col-xs-12 center">
+		Gestion de l'exposition 2016
+	</h2>
+</div>
 
-		<li><a href="Controleur?action=listerAdherent"><font
-				face="Arial">lister les adhérents</font></a><font face="Arial"> </font></li>
+<br />
+<br />
 
-		<li><a href="Controleur?action=listerOeuvre"><font
-				face="Arial">lister les oeuvres en vente</font></a><font face="Arial"> </font></li>
-
-		<li><a href="javascript:fermer()"><font face="Arial">Quitter</font></a><font
-			face="Arial"> </font></li>
-	</ul>
-</body>
-</html>
+<div class="row">
+	<div class="col-xs-10 col-xs-offset-1">
+		<div class="row row-eq-height">
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<a href="Controleur?action=ajouterAdherent">
+					<div class="pan pan-green">
+						<div class="pan-body"><span class="glyphicon glyphicon-plus"></span></div>
+						<div class="pan-footer">Ajouter un Adhérent</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<a href="Controleur?action=listerAdherent">
+					<div class="pan pan-blue">
+						<div class="pan-body"><span class="glyphicon glyphicon-edit"></span></div>
+						<div class="pan-footer">Lister les Adhérents</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-3">
+				<a href="Controleur?action=listerOeuvre">
+					<div class="pan pan-blue">
+						<div class="pan-body"><span class="glyphicon glyphicon-duplicate"></span></div>
+						<div class="pan-footer">Lister les Oeuvres en vente</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<a href="javascript:fermer()">
+					<div class="pan pan-red">
+						<div class="pan-body"><span class="glyphicon glyphicon-remove-sign"></span></div>
+						<div class="pan-footer">Fermer</div>
+					</div>
+					<!-- Does not work -->
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+</jsp:body>
+</t:layout>
