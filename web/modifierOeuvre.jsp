@@ -23,35 +23,62 @@
 			</div>
 		</div>
 
-		<DIV align="center">
-			<FORM  name='identification' method="post" action="Controleur?action=modifierOeuvre" onsubmit="return testeOeuvre()">
-				<!-- Champ caché -->
-				<input type="hidden" name="idOeuvre" value="${oeuvre.idOeuvrevente}">
+		<div class="row center">
+			<form name='identification' method="post" action="Controleur?action=modifierOeuvre" onsubmit="return testeOeuvre()">
+				<div class="col-xs-10 col-xs-offset-1">
+					<!-- Champ caché -->
+					<input type="hidden" name="idOeuvre" value="${oeuvre.idOeuvrevente}">
 
-				<P align="left"><FONT face="Arial" color="#004080"></FONT>
-					<FONT face="Arial" color="#004080"> <BR>&nbsp;  &nbsp;  &nbsp; Titre de l'oeuvre : </FONT>
-					<INPUT type="text" name="txttitre" value="${oeuvre.titreOeuvrevente}"  id ="titre"> <BR>
-					<FONT face="Arial" color="#004080">
-						<BR>Prix : </FONT>
-					<INPUT type="text" name="txtprix" value="${oeuvre.prixOeuvrevente}" id ="prix"> <BR>
+					<div class="row">
+						<div class="col-xs-4">
+							<label for="nom">
+								Titre de l'œuvre :
+							</label>
+						</div>
+						<div class="col-xs-8">
+							<input class="form-control" type="text" name="txttitre" value="${oeuvre.titreOeuvrevente}" id ="titre">
+						</div>
+					</div>
 
-					<FONT face="Arial" color="#004080"> <BR>&nbsp;  &nbsp;  &nbsp; Propriétaire :</FONT>
-					<select name="prop">
-						<c:forEach items="${mesProp}" var="item">
-							<option value="${item.idProprietaire}">${item.nomProprietaire}</option>
-						</c:forEach>
-					</select>
+					<div class="row">
+						<div class="col-xs-4">
+							<label for="nom">
+								Prix :
+							</label>
+						</div>
+						<div class="col-xs-8">
+							<input class="form-control" type="text" name="txtprix" value="${oeuvre.prixOeuvrevente}" id ="prix">
+						</div>
+					</div>
 
-					<FONT face="Arial" color="#004080">	<BR></FONT><BR>
+					<div class="row">
+						<div class="col-xs-4">
+							<label for="nom">
+								Propriétaire :
+							</label>
+						</div>
+						<div class="col-xs-8">
+							<select name="prop" class="form-control">
+								<c:forEach items="${mesProp}" var="item">
+									<option value="${item.idProprietaire}">${item.nomProprietaire}</option>
+								</c:forEach>
+							</select>
+						</div>
+					</div>
 
-					<!-- Boutons Ajouter -->
-
-					<INPUT type="submit" name="bt"  value="Modifier" >
-					<FONT face="Arial" color="#004080"></FONT>
-					&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a class="btn btn-light" href="Controleur?action=listerOeuvre">Annuler</a>
-
-				</P></FORM>
-		</DIV>
+					<br />
+					
+					<div class="row">
+						<div class="col-xs-4 col-xs-offset-1">
+							<!-- Boutons Ajouter -->
+							<input type="submit" name="bt" class="btn btn-info btn-lg" value="Ajouter" />
+						</div>
+						<div class="col-xs-4 col-xs-offset-2">
+							<a class="btn btn-light btn-lg" href="Controleur?action=listerOeuvre">Annuler</a>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
 </jsp:body>
 </t:layout>
