@@ -36,7 +36,7 @@
 					</div>
 				</a>
 			</div>
-            <div class="col-md-3 col-sm-6 col-xs-12 col-sm-6 fill-div">
+			<div class="col-md-3 col-sm-6 col-xs-12">
                 <a href="Controleur?action=ajouterOeuvre">
                     <div class="pan pan-green">
                         <div class="pan-body"><span class="glyphicon glyphicon-plus"></span></div>
