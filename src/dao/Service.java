@@ -178,6 +178,42 @@ public class Service {
 			throw new MonException(exc.getMessage(), "systeme");
 		}
 	}
+
+	// Consultation des propriétaires
+	// Fabrique et renvoie une liste d'objets propriétaire contenant le r�sultat de
+	// la requ�te BDD
+	public List<Proprietaire> consulterListeProp() throws MonException {
+		String mysql = "select * from proprietaire";
+		return consulterListeProp(mysql);
+	}
+
+	private List<Proprietaire> consulterListeProp(String mysql) throws MonException {
+		List<Object> rs;
+		List<Proprietaire> mesProp = new ArrayList<Proprietaire>();
+		int index = 0;
+		try {
+			DialogueBd unDialogueBd = DialogueBd.getInstance();
+			rs =unDialogueBd.lecture(mysql);
+			while (index < rs.size()) {
+				// On cr�e un stage
+				Proprietaire prop = new Proprietaire();
+				// il faut redecouper la liste pour retrouver les lignes
+				prop.setIdProprietaire(Integer.parseInt(rs.get(index + 0).toString()));
+				prop.setNomProprietaire(rs.get(index + 1).toString());
+				prop.setPrenomProprietaire(rs.get(index + 2).toString());
+
+				// On incr�mente tous les 3 champs
+				index = index + 3;
+				mesProp.add(prop);
+			}
+			return mesProp;
+		} catch (MonException e) {
+			throw e;
+		}
+		catch (Exception exc) {
+			throw new MonException(exc.getMessage(), "systeme");
+		}
+	}
 	
 	 
 	public Proprietaire rechercherProprietaire(int  id) throws MonException
@@ -230,4 +266,22 @@ public class Service {
 			throw new MonException(exc.getMessage(), "systeme");
 		}
     }
+
+    public void modifierOeuvre(Oeuvrevente oeuvre) throws MonException
+	{
+		String mysql;
+		DialogueBd unDialogueBd = DialogueBd.getInstance();
+		try
+		{
+			mysql = "update oeuvrevente set titre_oeuvrevente = " + "'" + oeuvre.getTitreOeuvrevente() + "'"
+					+ ", prix_oeuvrevente = " + "'" + oeuvre.getPrixOeuvrevente() + "'"
+					+ ", id_proprietaire = " + "'" + oeuvre.getProprietaire().getIdProprietaire() + "'"
+					+ " where id_oeuvrevente = " + "'" + oeuvre.getIdOeuvrevente() + "'" + ";";
+			unDialogueBd.insertionBD(mysql);
+		} catch (MonException e) {
+			throw e;
+		} catch (Exception exc) {
+			throw new MonException(exc.getMessage(), "systeme");
+		}
+	}
 }

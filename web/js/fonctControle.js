@@ -21,3 +21,21 @@ function teste()
 
 return ok;
 }
+
+function testeOeuvre()
+{
+    var  ok=true;
+    if(document.identification.titre.value == "")
+    {
+        alert("Veuillez entrer le titre de votre oeurve.");
+        ok=false;
+    }
+    else
+    if(document.identification.prix.value == "")
+    {
+        alert("Veuillez entrer le prix de votre oeuvre.");
+        ok=false;
+    }
+
+    return ok;
+}

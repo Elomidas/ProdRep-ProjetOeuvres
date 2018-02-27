@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:layout>
@@ -16,32 +18,40 @@
 		<div class="row">
 			<div class="col-xs-8 col-xs-offset-2">
 				<h2 class="center">
-					Formulaire de modification d'oeuvres
+					Formulaire de modifications d'oeuvres
 				</h2>
 			</div>
 		</div>
 
-<div align="center">
-	<form  name='identification' method="post" action="Controleur?action=insererAdherent" onsubmit="return teste()">
-		<p align="left">
-			<font face="Arial" color="#004080"></font>
-			<font face="Arial" color="#004080"> <br>&nbsp;  &nbsp;  &nbsp; Nom de l'adherent : </font>
-			<input type="text" name="txtnom" value=""  id ="nom"> <br>
-			<font face="Arial" color="#004080">
-				<br>Prenom de l'adherent : </font>
-			<input type="text" name="txtprenom"  id ="prenom"  > <br>
+		<DIV align="center">
+			<FORM  name='identification' method="post" action="Controleur?action=modifierOeuvre" onsubmit="return testeOeuvre()">
+				<!-- Champ caché -->
+				<input type="hidden" name="idOeuvre" value="${oeuvre.idOeuvrevente}">
 
-			<font face="Arial" color="#004080"> <br>&nbsp;  &nbsp;  &nbsp; Ville de l'adherent :</font>
-			<input type="text" name="txtville" id ="ville">
-			<font face="Arial" color="#004080">	<br></font><br>
+				<P align="left"><FONT face="Arial" color="#004080"></FONT>
+					<FONT face="Arial" color="#004080"> <BR>&nbsp;  &nbsp;  &nbsp; Titre de l'oeuvre : </FONT>
+					<INPUT type="text" name="txttitre" value="${oeuvre.titreOeuvrevente}"  id ="titre"> <BR>
+					<FONT face="Arial" color="#004080">
+						<BR>Prix : </FONT>
+					<INPUT type="text" name="txtprix" value="${oeuvre.prixOeuvrevente}" id ="prix"> <BR>
 
-			<!-- Boutons Ajouter -->
+					<FONT face="Arial" color="#004080"> <BR>&nbsp;  &nbsp;  &nbsp; Propriétaire :</FONT>
+					<select name="prop">
+						<c:forEach items="${mesProp}" var="item">
+							<option value="${item.idProprietaire}">${item.nomProprietaire}</option>
+						</c:forEach>
+					</select>
 
-			<input type="submit" name="bt"  value="Modifier" >
-			<font face="Arial" color="#004080"></font>
-			&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<FONT face="Arial" color="#004080">	<BR></FONT><BR>
 
-		</p></form>
-</div>
+					<!-- Boutons Ajouter -->
+
+					<INPUT type="submit" name="bt"  value="Modifier" >
+					<FONT face="Arial" color="#004080"></FONT>
+					&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a class="btn btn-light" href="Controleur?action=listerOeuvre">Annuler</a>
+
+				</P></FORM>
+		</DIV>
 </jsp:body>
 </t:layout>

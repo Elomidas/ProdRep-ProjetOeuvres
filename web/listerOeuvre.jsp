@@ -60,12 +60,12 @@
 							${item.proprietaire.nomProprietaire}
 						</td>
 						<td>
-							<a href="reserverOeuvre.jsp">
+							<a href="Controleur?action=reserverMenu&idOeuvre=${item.idOeuvrevente}">
 								<input type="button" class="btn btn-info btn-lg" value="Réserver" />
 							</a>
 							&nbsp;
 							&nbsp;
-							<a href="modifierOeuvre.jsp">
+							<a href="Controleur?action=form_modifierOeuvre&idOeuvre=${item.idOeuvrevente}">
 								<input type="button" class="btn btn-info btn-lg" value="Modifier" />
 							</a>
 						</td>
