@@ -58,8 +58,8 @@
 							</label>
 						</div>
 						<div class="col-xs-8">
-							<select name="prop" class="form-control">
-								<c:forEach items="${mesProp}" var="item" id="proprio">
+							<select name="prop" class="form-control" id="proprio">
+								<c:forEach items="${mesProp}" var="item">
 									<option value="${item.idProprietaire}">${item.nomProprietaire}</option>
 								</c:forEach>
 							</select>
