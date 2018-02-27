@@ -24,7 +24,7 @@
 			</div>
 		</div>
 
-		<div class="row">
+		<div class="row" style="text-align: left">
 			<form name='reservation' method="post" action="Controleur?action=reserverOeuvre">
 				<!-- Champ caché -->
 				<input type="hidden" name="idOeuvre" value="${oeuvre.idOeuvrevente}">
@@ -72,7 +72,7 @@
 						</label>
 					</div>
 					<div class="col-xs-8">
-						<select name="idAdherent" id="adherent" required>
+						<select class="form-control" name="idAdherent" id="adherent" required>
 							<c:forEach items="${mesAdherents}" var="adherent">
 								<option value="${adherent.idAdherent}">${adherent.prenomAdherent} ${adherent.nomAdherent}</option>
 							</c:forEach>
