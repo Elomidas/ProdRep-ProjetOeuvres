@@ -31,7 +31,7 @@
 
 					<div class="row">
 						<div class="col-xs-4">
-							<label for="nom">
+							<label for="titre">
 								Titre de l'œuvre :
 							</label>
 						</div>
@@ -42,7 +42,7 @@
 
 					<div class="row">
 						<div class="col-xs-4">
-							<label for="nom">
+							<label for="prix">
 								Prix :
 							</label>
 						</div>
@@ -53,13 +53,13 @@
 
 					<div class="row">
 						<div class="col-xs-4">
-							<label for="nom">
+							<label for="proprio">
 								Propriétaire :
 							</label>
 						</div>
 						<div class="col-xs-8">
 							<select name="prop" class="form-control">
-								<c:forEach items="${mesProp}" var="item">
+								<c:forEach items="${mesProp}" var="item" id="proprio">
 									<option value="${item.idProprietaire}">${item.nomProprietaire}</option>
 								</c:forEach>
 							</select>
