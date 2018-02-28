@@ -37,6 +37,14 @@
 				</a>
 			</div>
 			<div class="col-md-3 col-sm-6 col-xs-12">
+                <a href="Controleur?action=ajouterOeuvre">
+                    <div class="pan pan-green">
+                        <div class="pan-body"><span class="glyphicon glyphicon-plus"></span></div>
+                        <div class="pan-footer">Ajouter une Oeuvre</div>
+                    </div>
+                </a>
+            </div>
+			<div class="col-md-3 col-sm-6 col-xs-12">
 				<a href="Controleur?action=listerAdherent">
 					<div class="pan pan-blue">
 						<div class="pan-body"><span class="glyphicon glyphicon-edit"></span></div>

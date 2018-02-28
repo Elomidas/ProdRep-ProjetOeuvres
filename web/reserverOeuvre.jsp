@@ -24,13 +24,13 @@
 			</div>
 		</div>
 
-		<div class="row">
+		<div class="row" style="text-align: left">
 			<form name='reservation' method="post" action="Controleur?action=reserverOeuvre">
 				<!-- Champ caché -->
 				<input type="hidden" name="idOeuvre" value="${oeuvre.idOeuvrevente}">
 
 				<!-- Champs désactivés -->
-				
+
 
 				<div class="row">
 					<div class="col-xs-4">
@@ -39,7 +39,7 @@
 						</label>
 					</div>
 					<div class="col-xs-8">
-						<input class="form-control" name="titre" id="titre" value="${oeuvre.titreOeuvrevente}" disabled>
+						<input class="form-control" name="titre" id="titre" value="${oeuvre.titreOeuvrevente}" readonly>
 					</div>
 				</div>
 
@@ -50,7 +50,7 @@
 						</label>
 					</div>
 					<div class="col-xs-8">
-						<input class="form-control" name="prix" id="prix" value="${oeuvre.prixOeuvrevente}" disabled>
+						<input class="form-control" name="prix" id="prix" value="${oeuvre.prixOeuvrevente}" readonly>
 					</div>
 				</div>
 
@@ -72,7 +72,7 @@
 						</label>
 					</div>
 					<div class="col-xs-8">
-						<select name="idAdherent" id="adherent" required>
+						<select class="form-control" name="idAdherent" id="adherent" required>
 							<c:forEach items="${mesAdherents}" var="adherent">
 								<option value="${adherent.idAdherent}">${adherent.prenomAdherent} ${adherent.nomAdherent}</option>
 							</c:forEach>
@@ -81,7 +81,7 @@
 				</div>
 
 				<br />
-				
+
 				<div class="row">
 					<div class="col-xs-4 col-xs-offset-1">
 						<!-- Boutons Ajouter -->

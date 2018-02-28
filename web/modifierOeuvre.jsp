@@ -23,7 +23,7 @@
 			</div>
 		</div>
 
-		<div class="row center">
+		<div class="row center" style="text-align: left">
 			<form name='identification' method="post" action="Controleur?action=modifierOeuvre" onsubmit="return testeOeuvre()">
 				<div class="col-xs-10 col-xs-offset-1">
 					<!-- Champ caché -->
