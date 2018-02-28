@@ -49,7 +49,7 @@ label {
 }
 
 /* Panels
- * Define differents pan's color
+ * Define different pan's color
  */
 /* GLOBAL */
 .panels div {
@@ -63,7 +63,7 @@ label {
 .pan {
 	color: white;
 	border-radius: 10px;
-	height: 100%;
+	height: 100px;
 	max-width: 300px;
 	align-self: center;
 }
@@ -95,7 +95,8 @@ label {
 .pan {
 	color: white;
 	border-radius: 10px;
-	height: 100%;
+	margin-bottom: 10px;
+	height: 120px;
 	max-width: 300px;
 	min-width: 150px;
 	align-self: center;
@@ -115,8 +116,9 @@ label {
 }
 
 .pan-footer {
-	margin-bottom: 10px;
-	vertical-align: bottom;
+	position: absolute;
+	bottom: 5px;
+	width: 100%;
 	align-self: center;
 }
 

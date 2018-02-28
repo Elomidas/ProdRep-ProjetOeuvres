@@ -27,7 +27,7 @@
 
 <div class="row">
 	<div class="col-xs-10 col-xs-offset-1">
-		<div class="row row-eq-height">
+		<div class="row">
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<a href="Controleur?action=ajouterAdherent">
 					<div class="pan pan-green">
