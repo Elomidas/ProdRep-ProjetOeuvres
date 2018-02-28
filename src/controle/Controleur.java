@@ -103,7 +103,11 @@ public class Controleur extends HttpServlet {
 			destinationPage = "/index.jsp";
 		} else if (AJOUTER_OEUVRE.equals(actionName)) {
 			Service unService = new Service();
-			request.setAttribute("mesProprietaires", unService.consulterListeProprietaires());
+			try {
+				request.setAttribute("mesProprietaires", unService.consulterListeProp());
+			} catch (MonException e) {
+				e.printStackTrace();
+			}
 			destinationPage = "/ajouterOeuvre.jsp";
 		} else if (INSERER_OEUVRE.equals(actionName)) {
 			try {
