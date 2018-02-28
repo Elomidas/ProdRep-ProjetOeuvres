@@ -33,7 +33,7 @@
                             <label for="titre">Titre de l'oeuvre </label>
                         </div>
                         <div class="col-xs-8">
-                            <input name="titre" class="form-control" id="titre" value="">
+                            <input name="titre" class="form-control" id="titre" value="" required>
                         </div>
                     </div>
 
@@ -42,7 +42,7 @@
                             <label for="prix">Prix </label>
                         </div>
                         <div class="col-xs-8">
-                            <input type="number" name="prix" class="form-control" id="prix" value="">
+                            <input type="number" name="prix" class="form-control" id="prix" value="" required>
 
                         </div>
                     </div>
